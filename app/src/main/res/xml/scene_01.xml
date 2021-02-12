@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="2000">
+        <OnClick
+            motion:touchAnchorId="@+id/block"
+            motion:touchAnchorSide="right"
+            motion:dragDirection="dragRight" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                motion:keyPositionType="pathRelative"
+                motion:percentY="0.25"
+                motion:framePosition="25"
+                motion:motionTarget="@id/block"/>
+            <KeyPosition
+                motion:motionTarget="@+id/block"
+                motion:framePosition="75"
+                motion:keyPositionType="pathRelative"
+                motion:percentY="-0.25" />
+            <KeyAttribute
+                motion:motionTarget="@+id/block"
+                motion:framePosition="25"
+                android:rotation="-90" />
+            <KeyAttribute
+                motion:motionTarget="@+id/block"
+                motion:framePosition="75"
+                android:rotation="-30" />
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/block"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/block"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+</MotionScene>
